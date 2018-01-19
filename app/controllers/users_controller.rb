@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(set_params)
-    if @user
+    if @user.save
       redirect_to root_path, :notice=>'注册成功！'
     else
       render :new
