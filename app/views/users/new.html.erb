@@ -1,0 +1,22 @@
+<div class="page-header">
+<h1>注册</h1>
+</div>
+<% unless @user.errors.empty? %>
+  <div class="alert alert-danger">
+    <ul>
+      <% @user.errors.messages.values.flatten.each do |error| %>
+        <li><%= error  %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+<%= simple_form_for @user, validate: true do |f| %>
+    <div class="row">
+      <div class="col-sm-6">
+        <%= f.input :email, :label=>'邮箱' %>
+        <%= f.input :password, :label=>'密码'  %>
+        <%= f.input :password_confirmation, :label=>'确认密码'  %>
+        <%= f.submit '注册', :class=>'btn btn-primary', 'data-disable-with':'请稍后...' %>
+      </div>
+    </div>
+<% end %>
