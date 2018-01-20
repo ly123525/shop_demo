@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(set_params)
     if @user.save
-      redirect_to root_path, :notice=>'注册成功！'
+      redirect_to new_session_path, :notice=>'注册成功！'
     else
       render :new
     end

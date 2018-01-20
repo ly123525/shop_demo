@@ -11,6 +11,10 @@ class User < ApplicationRecord
   validates :password, :confirmation => {message: '密码不一致'}, if: :need_validate_password
   validates :password, :length=>{minimum: 6, message:'密码最短为6位'}, if: :need_validate_password
 
+  def user_name
+    self.email.split('@').first
+  end
+
 
   private
   def need_validate_password
