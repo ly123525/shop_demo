@@ -58,3 +58,4 @@ gem 'client_side_validations', '~> 11.0'
 gem 'client_side_validations-simple_form', '~> 6.5'
 
 gem 'sorcery', '~> 0.11.0'#认证
+gem 'awesome_nested_set', '~> 3.1', '>= 3.1.3'

@@ -10,7 +10,43 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180119093506) do
+ActiveRecord::Schema.define(version: 20180120015357) do
+
+  create_table "product_categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "title"
+    t.integer  "weight",         default: 0
+    t.integer  "products_count", default: 0
+    t.integer  "parent_id"
+    t.integer  "lft",                        null: false
+    t.integer  "rgt",                        null: false
+    t.integer  "depth",          default: 0, null: false
+    t.integer  "children_count", default: 0, null: false
+    t.integer  "position",       default: 0
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.index ["lft"], name: "index_product_categories_on_lft", using: :btree
+    t.index ["parent_id"], name: "index_product_categories_on_parent_id", using: :btree
+    t.index ["position"], name: "index_product_categories_on_position", using: :btree
+    t.index ["rgt"], name: "index_product_categories_on_rgt", using: :btree
+    t.index ["title"], name: "index_product_categories_on_title", using: :btree
+  end
+
+  create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "product_category_id"
+    t.string   "title"
+    t.string   "status",                                                     default: "off"
+    t.integer  "amount",                                                     default: 0
+    t.string   "uuid"
+    t.decimal  "msrp",                              precision: 10, scale: 2
+    t.decimal  "price",                             precision: 10, scale: 2
+    t.text     "description",         limit: 65535
+    t.datetime "created_at",                                                                 null: false
+    t.datetime "updated_at",                                                                 null: false
+    t.index ["product_category_id"], name: "index_products_on_product_category_id", using: :btree
+    t.index ["status", "product_category_id"], name: "index_products_on_status_and_product_category_id", using: :btree
+    t.index ["title"], name: "index_products_on_title", using: :btree
+    t.index ["uuid"], name: "index_products_on_uuid", unique: true, using: :btree
+  end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "email",                           null: false
