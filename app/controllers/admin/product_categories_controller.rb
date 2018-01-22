@@ -26,7 +26,7 @@ before_action :set_category, :only=>[:edit, :update, :destroy, :up, :down]
     if @category.update(category_params)
       redirect_to admin_product_categories_url, :notice=>'修改成功！'
     else
-      render :edit
+      render :new
     end
   end
 

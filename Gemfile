@@ -61,3 +61,4 @@ gem 'sorcery', '~> 0.11.0'#认证
 gem 'awesome_nested_set', '~> 3.1', '>= 3.1.3'
 
 gem 'will_paginate', '~> 3.1', '>= 3.1.6'
+gem 'enum_help', '~> 0.0.17'

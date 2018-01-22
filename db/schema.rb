@@ -34,14 +34,14 @@ ActiveRecord::Schema.define(version: 20180120015357) do
   create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "product_category_id"
     t.string   "title"
-    t.string   "status",                                                     default: "off"
+    t.integer  "status",                                                     default: 0
     t.integer  "amount",                                                     default: 0
     t.string   "uuid"
     t.decimal  "msrp",                              precision: 10, scale: 2
     t.decimal  "price",                             precision: 10, scale: 2
     t.text     "description",         limit: 65535
-    t.datetime "created_at",                                                                 null: false
-    t.datetime "updated_at",                                                                 null: false
+    t.datetime "created_at",                                                             null: false
+    t.datetime "updated_at",                                                             null: false
     t.index ["product_category_id"], name: "index_products_on_product_category_id", using: :btree
     t.index ["status", "product_category_id"], name: "index_products_on_status_and_product_category_id", using: :btree
     t.index ["title"], name: "index_products_on_title", using: :btree

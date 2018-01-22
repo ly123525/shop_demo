@@ -23,7 +23,7 @@
       <tbody>
       <% @categories.each do |cate| %>
       <tr>
-        <td><%= '——' * cate.level %><i class="fa fa-folder-open"></i><%= cate.title %></td>
+        <td><%= '——' * cate.level %><i class="fa fa-folder-open"></i><a href="<%= admin_product_category_products_url(cate) %>"><%= cate.title %></a></td>
         <td><%= cate.products_count %></td>
         <td><%= link_to '上升', up_admin_product_category_path(cate) if cate.left_sibling.present? %></td>
         <td><%= link_to '下降', down_admin_product_category_path(cate) if cate.right_sibling.present? %></td>

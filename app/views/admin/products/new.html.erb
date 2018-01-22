@@ -1,0 +1,19 @@
+<div class="page-header">
+  <h1>新建商品</h1>
+  <div class="pull-right">
+    <%= link_to '返回', :back, :class=>'btn btn-default btn-sm' %>
+  </div>
+</div>
+<%= simple_form_for [:admin, @category ,@product], validate: true do |f| %>
+  <div class="row">
+    <div class="col-sm-6">
+      <%= f.input :title, :label=>'名称' %>
+      <%= f.input :status, :label=>'状态' %>
+      <%= f.input :amount, :label=>'库存' %>
+      <%= f.input :msrp, :label=>'市场价' %>
+      <%= f.input :price, :label=>'价格' %>
+      <%= f.input :description, :label=>'描述' %>
+      <%= f.submit '保存', :class=>'btn btn-success btn-sm', 'data-disable-with'=> '请稍后...' %>
+    </div>
+  </div>
+<% end %>

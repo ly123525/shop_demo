@@ -1,0 +1,6 @@
+zh-CN:
+  enums:
+    product:
+      status:
+        shang: 上架
+        xia: 下架
