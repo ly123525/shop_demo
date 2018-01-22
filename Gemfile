@@ -59,3 +59,5 @@ gem 'client_side_validations-simple_form', '~> 6.5'
 
 gem 'sorcery', '~> 0.11.0'#认证
 gem 'awesome_nested_set', '~> 3.1', '>= 3.1.3'
+
+gem 'will_paginate', '~> 3.1', '>= 3.1.6'

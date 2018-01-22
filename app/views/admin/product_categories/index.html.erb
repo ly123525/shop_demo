@@ -1,0 +1,38 @@
+<div class="page-header">
+  <h1>商品分类</h1>
+  <div class="pull-right">
+    <%= link_to '新建分类', new_admin_product_category_path, :class=>'btn btn-success btn-sm' %>
+  </div>
+</div>
+<table class="table table-striped table-bordered table-hover">
+  <col/>
+  <col width="50"/>
+  <col width="50"/>
+  <col width="50"/>
+  <col width="120"/>
+  <thead>
+    <tr>
+      <th>名称</th>
+      <th>商品数量</th>
+      <th>上升</th>
+      <th>下降</th>
+      <th>操作</th>
+    </tr>
+  </thead>
+  <% if @categories.any? %>
+      <tbody>
+      <% @categories.each do |cate| %>
+      <tr>
+        <td><%= '——' * cate.level %><i class="fa fa-folder-open"></i><%= cate.title %></td>
+        <td><%= cate.products_count %></td>
+        <td><%= link_to '上升', up_admin_product_category_path(cate) if cate.left_sibling.present? %></td>
+        <td><%= link_to '下降', down_admin_product_category_path(cate) if cate.right_sibling.present? %></td>
+        <td>
+          <%= link_to '编辑', edit_admin_product_category_path(cate), :class=>'btn btn-link btn-sm' %>
+          <%= link_to '删除', admin_product_category_path(cate), :method=> :delete, :class=>'btn btn-link btn-sm', data: {confirm: '确认删除么？' }  %>
+        </td>
+      </tr>
+      <% end %>
+      </tbody>
+  <% end %>
+</table>

@@ -1,0 +1,16 @@
+<div class="page-header">
+  <h1><%= @category.new_record? ? '新建分类': '编辑分类' %></h1>
+  <div class="pull-right">
+    <%= link_to '返回', :back, :class=>'btn btn-default btn-sm' %>
+  </div>
+</div>
+<%= simple_form_for [:admin, @category],  validate: true do |f| %>
+    <div class="row">
+      <div class="col-sm-6">
+        <%= f.input :parent_id, :label=>'父级分类', :collection=> nested_set_options(ProductCategory){|i|"#{'-' * i.level}#{i.title}"}, :prompt=>'顶级分类' %>
+        <%= f.input :title, :label=>'名称' %>
+        <%= f.input :position, :label=>'顺序' %>
+        <%= f.submit '保存', :class=>'btn btn-success btn-sm', 'data-disable-with': '请稍后...' %>
+      </div>
+    </div>
+<% end %>
