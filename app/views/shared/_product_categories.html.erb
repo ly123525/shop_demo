@@ -1,0 +1,9 @@
+<ul class="list-group">
+  <% @categories.each do |cate| %>
+      <% if cate.root? %>
+      <li class="list-group-item"><%= cate.title %></li>
+      <% else %>
+          <li class="list-group-item"><%= link_to "#{'——'* cate.level}#{cate.title}", product_category_path(cate) %></li>
+<% end %>
+  <% end %>
+</ul>

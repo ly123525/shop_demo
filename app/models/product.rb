@@ -14,10 +14,12 @@ class Product < ApplicationRecord
             if: proc{|product| !product.price.blank?}
   validates :description, presence:{message: '描述不能为空'}
 
-  enum :status=>{:shang=>0, :xia=>1}
+  enum :status=>{:xia=>0, :shang=>1}
 
   has_many :product_images, -> {order(weight: :desc)}, :dependent => :destroy
-
+  has_one :main_product_image, -> {order(weight: :desc)},
+          class_name: 'ProductImage'
+  scope :onshelf, ->{where(status: 1)}
   private
   def set_default_uuid
     self.uuid = RandomCode.generate_product_uuid

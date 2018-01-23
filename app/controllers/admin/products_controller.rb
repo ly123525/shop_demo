@@ -2,7 +2,7 @@ class Admin::ProductsController < Admin::BaseController
   before_action :set_product_category
   before_action :set_product, :only=>[:edit, :update, :destroy]
   def index
-    @products = Product.page(params[:page] || 1).per_page(params[:per_page] || 10).order(id: :desc)
+    @products = @category.products.page(params[:page] || 1).per_page(params[:per_page] || 10).order(id: :desc)
   end
 
   def new

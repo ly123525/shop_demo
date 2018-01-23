@@ -61,7 +61,7 @@ class ProductImageUploader < CarrierWave::Uploader::Base
   end
 
   version :small do
-    process resize_to_fit: [250, 250]
+    process resize_to_fit: [200, 200]
     process :convert => 'png'
     def full_filename (for_file = model.logo.file)
       "small_250*250.png"

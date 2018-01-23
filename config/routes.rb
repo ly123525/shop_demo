@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
-  get 'sessions/new'
 
   root 'welcomes#index'
   resources :users
   resources :sessions
   delete '/logout'=> 'sessions#destroy', as: :logout
+  resources :product_categories
+  resources :products
 
   namespace :admin do
     root 'welcomes#index'
