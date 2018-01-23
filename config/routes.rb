@@ -15,5 +15,10 @@ Rails.application.routes.draw do
       end
       resources :products
     end
+
+    resources :products do
+      resources :product_images
+    end
+
   end
 end

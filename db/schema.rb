@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180120015357) do
+ActiveRecord::Schema.define(version: 20180123053226) do
 
   create_table "product_categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "title"
@@ -31,17 +31,28 @@ ActiveRecord::Schema.define(version: 20180120015357) do
     t.index ["title"], name: "index_product_categories_on_title", using: :btree
   end
 
+  create_table "product_images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "product_id"
+    t.integer  "weight"
+    t.string   "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id", "weight"], name: "index_product_images_on_product_id_and_weight", using: :btree
+    t.index ["product_id"], name: "index_product_images_on_product_id", using: :btree
+  end
+
   create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "product_category_id"
     t.string   "title"
-    t.integer  "status",                                                     default: 0
-    t.integer  "amount",                                                     default: 0
+    t.integer  "status",                                                      default: 0
+    t.integer  "amount",                                                      default: 0
     t.string   "uuid"
-    t.decimal  "msrp",                              precision: 10, scale: 2
-    t.decimal  "price",                             precision: 10, scale: 2
-    t.text     "description",         limit: 65535
-    t.datetime "created_at",                                                             null: false
-    t.datetime "updated_at",                                                             null: false
+    t.decimal  "msrp",                               precision: 10, scale: 2
+    t.decimal  "price",                              precision: 10, scale: 2
+    t.text     "description",          limit: 65535
+    t.datetime "created_at",                                                              null: false
+    t.datetime "updated_at",                                                              null: false
+    t.integer  "product_images_count"
     t.index ["product_category_id"], name: "index_products_on_product_category_id", using: :btree
     t.index ["status", "product_category_id"], name: "index_products_on_status_and_product_category_id", using: :btree
     t.index ["title"], name: "index_products_on_title", using: :btree

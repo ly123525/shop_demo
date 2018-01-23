@@ -2,3 +2,12 @@
 @import "bootstrap";
 @import "font-awesome";
 @import "common/animate";
+
+input[type="file"] {
+  &.image-input {
+    display: inline-block;
+    border: 1px solid #ccc;
+    padding: 5px 20px;
+    border-radius: 4px
+  }
+}

@@ -11,7 +11,7 @@
   <col width="100"/>
   <col width="100"/>
   <col width="100"/>
-  <col width="120"/>
+  <col width="180"/>
   <thead>
     <tr>
       <th>编号</th>
@@ -35,6 +35,7 @@
           <td>
             <%= link_to '编辑', edit_admin_product_category_product_path(@category,product), :class=>'btn btn-link btn-sm' %>
             <%= link_to '删除', admin_product_category_product_path(@category, product), :method=> :delete, :class=>'btn btn-link btn-sm' %>
+            <%= link_to '图片', admin_product_product_images_path(product), :class=>'btn btn-link btn-sm' %>
           </td>
           </tr>
       <% end %>

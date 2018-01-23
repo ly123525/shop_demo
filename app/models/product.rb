@@ -16,6 +16,8 @@ class Product < ApplicationRecord
 
   enum :status=>{:shang=>0, :xia=>1}
 
+  has_many :product_images, -> {order(weight: :desc)}, :dependent => :destroy
+
   private
   def set_default_uuid
     self.uuid = RandomCode.generate_product_uuid

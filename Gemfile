@@ -62,3 +62,7 @@ gem 'awesome_nested_set', '~> 3.1', '>= 3.1.3'
 
 gem 'will_paginate', '~> 3.1', '>= 3.1.6'
 gem 'enum_help', '~> 0.0.17'
+#上传
+gem 'carrierwave', '~> 1.2', '>= 1.2.2'
+gem 'mini_magick', '~> 4.8'
+gem 'mime-types', '~> 3.1'
