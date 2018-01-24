@@ -15,3 +15,4 @@
 //= require bootstrap-sprockets
 //= require rails.validations
 //= require rails.validations.simple_form
+//= require base.js

@@ -6,6 +6,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(set_params)
+    @user.uuid = session[:user_uuid]
     if @user.save
       redirect_to new_session_path, :notice=>'注册成功！'
     else

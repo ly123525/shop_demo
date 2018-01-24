@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
 
   def show
-    @categories = ProductCategory.nested_set_scope
+    fetch_home_data
     @product = Product.find(params[:id])
   end
 end
