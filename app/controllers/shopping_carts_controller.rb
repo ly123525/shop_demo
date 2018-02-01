@@ -18,4 +18,23 @@ class ShoppingCartsController < ApplicationController
    render layout: false
  end
 
+ def update
+    @shopping_cart = ShoppingCart.by_user_uuid(session[:user_uuid]).where(id: params[:id]).first
+    if @shopping_cart
+      amount = params[:amount].to_i
+      amount = amount <= 0 ? 1 : amount
+      @shopping_cart.update_attribute(:amount, amount)
+    end
+      redirect_to shopping_carts_path
+ end
+
+ def destroy
+   @shopping_cart = ShoppingCart.by_user_uuid(session[:user_uuid]).where(id: params[:id]).first
+   if @shopping_cart
+     @shopping_cart.destroy
+   end
+   redirect_to shopping_carts_path
+ end
+
+
 end
