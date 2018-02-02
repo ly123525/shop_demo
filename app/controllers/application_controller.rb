@@ -4,6 +4,12 @@ class ApplicationController < ActionController::Base
   before_action :set_browser_uuid
   protected
 
+  def auth_user
+    unless logged_in?
+      redirect_to new_session_path, :notice=>'请登陆'
+    end
+  end
+
   def fetch_home_data
     @categories = ProductCategory.nested_set_scope
     @shopping_cart_count = ShoppingCart.by_user_uuid(session[:user_uuid]).count

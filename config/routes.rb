@@ -7,6 +7,12 @@ Rails.application.routes.draw do
   resources :product_categories
   resources :products
   resources :shopping_carts
+  resources :addresses do
+    member do
+      put :set_default_address
+    end
+  end
+  resources :orders
 
   namespace :admin do
     root 'welcomes#index'
