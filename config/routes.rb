@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     end
   end
   resources :orders
-
+  resources :payments
   namespace :admin do
     root 'welcomes#index'
     resources :sessions

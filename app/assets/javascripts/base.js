@@ -65,5 +65,17 @@
         })
         .on('ajax:success', '.set-default-address-btn, .remove-address-btn', function(e, data) {
             $('#address_list').html(data.data);
-        })
+        });
+    //生成订单
+    $('.create-order-form').submit(function(){
+        var addressID = $('input[name="address_id"]:checked').val();
+        var $form = $(this);
+        if(!addressID){
+            alert("请选择收货地址");
+            return false;
+        }else{
+            $form.find('input[name="address_id"]').val(addressID);
+            return true;
+        }
+    });
 })(jQuery);
