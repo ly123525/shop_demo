@@ -22,6 +22,16 @@ Rails.application.routes.draw do
       get :failed
     end
   end
+  namespace :dashboard do
+    scope 'profile' do
+      controller :profile do
+        get :password
+        put :update_password
+      end
+    end
+    resources :orders
+    resources :addresses
+  end
   namespace :admin do
     root 'welcomes#index'
     resources :sessions
