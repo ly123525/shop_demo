@@ -14,6 +14,7 @@ class User < ApplicationRecord
   has_many :addresses, ->{where(:address_type=> 0).order('id desc')} #address_type为0是用户地址， 1为订单地址
   belongs_to :default_address, class_name: :Address
   has_many :orders
+  has_many :payments
 
   def user_name
     self.email.split('@').first

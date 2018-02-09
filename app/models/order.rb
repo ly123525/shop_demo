@@ -5,10 +5,11 @@ class Order < ApplicationRecord
   validates :total_money, presence: true
   validates :amount, presence: true
   validates :order_no, uniqueness: true
-
+  enum :status=>{:no_pay=>0, :complete_pay=>1}
   belongs_to :user
   belongs_to :product
   belongs_to :address  #用户地址为0, 订单地址为1
+  belongs_to :payment
 
   before_create :gen_order_no
 
@@ -31,8 +32,12 @@ class Order < ApplicationRecord
         end
         shopping_carts.map(&:destroy)
       end
+    orders
   end
 
+  def is_paid?
+    self.status == 1
+  end
 
   private
   def gen_order_no
