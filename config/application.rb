@@ -10,6 +10,7 @@ ENV['ALIPAY_MD5_SECRET'] = 'YOUR-ALIPAY-MD5-SECRET'
 ENV['ALIPAY_URL'] = 'https://mapi.alipay.com/gateway.do'
 ENV['ALIPAY_RETURN_URL'] = 'http://localhost:3000/payments/pay_return'
 ENV['ALIPAY_NOTIFY_URL'] = 'http://localhost:3000/payments/pay_notify'
+ENV['SMS_API_KEY'] = 'SMS-API-key'
 module ShopDemo
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.

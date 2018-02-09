@@ -66,3 +66,5 @@ gem 'enum_help', '~> 0.0.17'
 gem 'carrierwave', '~> 1.2', '>= 1.2.2'
 gem 'mini_magick', '~> 4.8'
 gem 'mime-types', '~> 3.1'
+
+gem 'rest-client', '~> 2.0', '>= 2.0.2'

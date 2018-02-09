@@ -13,6 +13,7 @@ class SessionsController < ApplicationController
 
   def destroy
     logout
+    cookies.delete :user_uuid
     redirect_to root_path, :notice=>'安全退出'
   end
 end
